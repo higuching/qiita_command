@@ -95,7 +95,7 @@ function post(article_json) {
 }
 
 function headers() {
-  var token = PropertiesService.getScriptProperties().getProperty('SLACK_AUTH_TOKEN');
+  var token = PropertiesService.getScriptProperties().getProperty('QiITA_ACCESS_TOKEN');
   return {
     "Authorization": "Bearer " + token
   };
