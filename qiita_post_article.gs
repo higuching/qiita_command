@@ -23,7 +23,7 @@ function doPost(e) {
 }
 
 function templateList() {
-  var url = "https://fablic.qiita.com/api/v2/templates?page=1&per_page=100";
+  var url = getQiitaUrl() + "/api/v2/templates?page=1&per_page=100";
   var options = {
      "method" : "get",
      "headers" : headers(),
@@ -41,7 +41,7 @@ function templateList() {
 }
 
 function template(template_id) {
-  var url = "https://fablic.qiita.com/api/v2/templates/:template_id".replace(':template_id', template_id);
+  var url = getQiitaUrl() + "/api/v2/templates/:template_id".replace(':template_id', template_id);
   var options = {
      "method" : "get",
      "headers" : headers(),
@@ -76,7 +76,7 @@ function createArticle(template_json) {
 }
 
 function post(article_json) {
-  var url = "https://fablic.qiita.com/api/v2/items";
+  var url = getQiitaUrl() + "/api/v2/items";
 
   var options = {
     "method" : "post",
@@ -180,4 +180,8 @@ function postSlackMessage(message, channelId) {
   
   slackApp.postMessage(channelId, message, options);
   console.log('===finish!===');
+}
+
+function getQiitaUrl() {
+  PropertiesService.getScriptProperties().getProperty('QIITA_URL')  
 }
